@@ -1,31 +1,261 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
-    <!--
-      Notice the use of %PUBLIC_URL% in the tag above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+<head>
+<meta charset="utf-8">
+<meta name="author" content="greatsilas23">
+<meta name="description" content="a report that uses traditional file management system in Point Of Sale at vendors and retailers">
+<meta name="robots" content="follow, no-follow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.newGame{
+animation: newGameAnim 1.2s;
+}
+@keyframes newGameAnim{
+from {
+background-color: grey;
+border: solid 2px black;
+display: none;
+height: 60vh;
+left: 30vw;
+position: absolute;
+top: -10vh;
+width: 60vw;
+z-index: 500;
+} to { 
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
+background-color: grey;
+border: solid 2px black;
+display: none;
+height: 60vh;
+left: 30vw;
+position: absolute;
+top: 40vh;
+width: 60vw;
+z-index: 2;
+}
+}
 
-      To begin the development, run `npm start`.
-      To create a production bundle, use `npm run build`.
-    -->
-  </body>
-</html>
+.gameOver{
+animation: gameOverAnim 1.2s;
+}
+@keyframes gameOverAnim {
+from{ 
+
+background-color: grey;
+border: solid 2px black;
+display: none;
+height: 60vh;
+left: 30vw;
+position: absolute;
+top: -10vh;
+width: 60vw;
+z-index: 500;
+
+} to {
+
+
+background-color: grey;
+border: solid 2px black;
+display: none;
+height: 60vh;
+left: 30vw;
+position: absolute;
+top: 30vh;
+width: 60vw;
+z-index: 2;
+}
+}
+
+
+.jump{
+animation: jumpAnim 1.2s;
+}
+@keyframes jumpAnim{
+from{
+top: 80vh;
+} to { 
+top: 70vh;
+}
+}
+.punch
+{
+animation: punchAnim 1.2s;
+}
+@keyframes punchAnim{
+from {
+transform(rotateX: 45;)
+} to {
+transform(rotateX: 15;)
+}
+}
+</head>
+<body>
+</body>
+<script type="text/javascript">
+/** @Author: greatsilas23
+  * @Date: Tue Sep 26 2023 21:43:00 +0300
+  * @LastModifiedBy: greatsilas23
+  * @LastModifiedDate: Tue Sep 26 22:48:00 +0300
+  */
+const gravity = 2
+const sim = new Date().getSeconds()
+
+
+let i = 9
+let id = 'div01'
+let name
+let description = new Object({ posX: 0, posY: 0, top: 0, left: 0, val: null})
+let isGameOver = false
+
+while(!isGameOver){
+class Line{
+constructor(a, b, c, d){
+this.isEmpty = false
+this.a = a
+this.b = b
+this.c = c
+this.d = d
+}
+update(posX, posY, top, left){
+let result
+!this.isEmpty ? result = new Line(posX, posY, top, left) : console.log('err')
+return result
+}
+}
+class Plane{
+constructor(a, b, c, d){
+this.isEmpty = false
+this.a = a
+this.b = b
+this.c = c
+this.d = d
+}
+update(posX, posY, top, left){
+let result 
+!this.isEmpty ? result = new Plane(posX, posY, top, left) : console.log('err')
+return result
+}
+}
+class Reservation{
+constructor(id, name, description){
+this.isEmpty = true
+this.id = id
+this.name = name
+this.description = description
+}
+}
+
+class Menu {
+constructor(a, b){
+this.a = a
+this.b = b
+}
+update(posX, posY, top, left){
+let result
+!this.isEmpty ? result = new Menu(posX, posY, top, left) : console.log('err')
+
+return result
+}
+}
+class Component{
+constructor(id, name, description){
+this.id = id
+this.name = name
+this.description = description
+this.isEmpty = false
+}
+update(posX, posY, top, left) {
+let result 
+!this.isEmpty ? result = new Line(posX, posY, top, left) : console.log('err')
+
+return result
+}
+}
+
+let myLine2 = new Line(posX, posY, top, left)
+console.log(myLine2)
+let myLine3 = new Line(posX, posY, top, left)
+console.log(myLine3)
+
+class Avatar extends Reservation{
+constructor(posX, posY, top, left){
+super()
+this.isEmpty = false
+this.avatarId = this.id
+this.avatarName = this.avatar
+this.avatarDescription = myLine2.update(posX, posY, top, left)
+}
+get(){
+let result 
+!this.isEmpty ? result = '<div id="'.concat(id).concat('" class="" >').concat(this.avatarDescription).concat('</div>') : console.log('err')
+
+return result
+}
+update(posX, posY, top, left){
+let result
+!this.isEmpty ? result = myLine3.update(posX, posY, top, left) : console.log('err')
+return result
+}
+}
+
+let myLine = new Line(0, 0, 0, 0)
+console.log(myLine)
+class City extends Reservation{
+constructor(posX, posY, top, left){
+super()
+this.isEmpty = false
+this.cityId = this.id
+this.cityName = this.name
+this.cityDescription = myLine.update(posX, posY, top, left)
+}
+get(){
+let result
+!this.isEmpty ? result = this.cityDescription : console.log('err')
+
+return result
+}
+}
+let myMenu = new Menu(0, 0, 0, 0)
+console.log(myMenu)
+let myPlane = new Plane(0, 0, 0, 0)
+console.log(myPlane)
+class Game extends Component {
+constructor(){
+this.gameId = id.charAt(i).concat(id.charAt(i + 1)).concat(id.charAt(i + 2)).concat(id.charAt(i + 3)).concat(id.charAt(i + 4)).concat(id.charAt(i + 5)).concat(id.charAt(i + 6))
+
+
+this.gameName = id.charAt(i).concat(id.charAt(i + 1)).concat(id.charAt(i + 2)).concat(id.charAt(i + 3)).concat(id.charAt(i + 4)).concat(id.charAt(i + 5)).concat(id.charAt(i + 6))
+this.isGameOver = false
+this.menu = myMenu.update()
+}
+getCanvas(){
+let result
+!this.isGameOver ? result = this.gameDescription : console.log('err')
+
+return result
+}
+update(posX, posY, top, left){
+let result
+!this.isGameOver ? result = myPlane.update(posX, posY, top, left) : console.log('err')
+return result
+}
+}
+
+let myGame = new Game(0, 0, 0, 0)
+
+
+const d = setInterval(() => document.querySelector('body').innerHTML += myGame.update(description.posX, description.posY, description.top, description.left))
+
+const e = setInterval(() => (sim - new Date().getSeconds() >= 60) ? isGameOver = true : isGameOver = false)
+
+
+key1.addEventListener('click', () => document.querySelector('div#id01').classList.add(jump))
+
+
+key2.addEventListener('click', () => document.querySelector('div#id01').classList.add(punch))
+
+
+score = score++
+}
+console.log('game over')
