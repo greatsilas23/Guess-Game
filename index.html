@@ -7,6 +7,22 @@ this.name = name
 this.policy = `<p>Guess-Game<br> Guess-Game is an online 2d platform<br> Policy<br> Introduction<br> Service Provider<br> These terms are between you and Guess game </p> &copy; <p>2023  Age and eligibility requirements In order to use the Guess-Game and access any content you need to be 13 years of age (or equivalent minimum age in your country) or older, have parental or guardian consent if you are a minor in your home country, have the power to enter into a binding contract with us and not be barred from doing so under any applicable laws, reside in a country where the service is available <br>Guess-Game Provided By Us<br> Guess-Game Options<br> We provide numerous Guess-Game Options<br> Trials From time to time we or others on our behalf may offer paid subscription for a specified period without payment or at a reduced rate <br>Third Party Applications, Devices and Open Source Software Third-Party Applications, Devices And Open Source Software<br> The Guess-Game may be integrated with, or may otherwise interact with third party applications websites and services and third-party personal computers and mobile handsets<br> Service Limitations and Modifications <br>We use reasonable Care and skill to keep the Guess-Game operational <br>Your Use of The Guess-Game<br> Creating a Guess-Game copyright </p>&copy;<p> nyamwas 2023 account<br> You may need to create a a Guess-Game copyright </p>&copy;<p> nyamwas 2023 Account to use<br> Your rights to use the  Guess-Game copyright </p>&copy;<p> nyamwas 2023 webpage<br> Access to Guess-Game<br> Subject to your compliance with these Terms, we grant you limited, non-exclusive, revocable permission to make personal non-commercial use of the Guess-Game and the Content <br></p>`
 }
 }
+let resolution = new Array([0,1,1,1,1,1,1,1,0],
+[1,1,1,1,1,1,1,1,1],
+[2,2,2,2,2,2,2,2,2],
+[2,1,1,2,2,2,1,1,2],
+[2,2,2,2,2,2,2,2,2],
+[2,2,2,2,2,2,2,2,2],
+[2,3,1,3,2,3,1,3,2],
+[2,2,2,2,2,2,2,2,2],
+[2,2,4,4,4,4,4,2,2],
+[2,2,4,3,3,3,4,2,2],
+[0,2,4,3,3,3,4,2,0],
+[0,0,4,4,4,4,4,0,0],
+[0,0,4,4,4,4,4,0,0],
+[0,0,4,4,4,4,4,0,0],
+[0,0,4,4,4,4,4,0,0],
+[0,0,4,4,4,4,4,0,0])
 class Header extends Account{
 constructor(source, destination){
 this.source = source
@@ -15,10 +31,10 @@ this.destination = new Network(this.destination)
 
 getHeader(){
 let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= j+ 1)
+for(let i = 1; i< 16;i= i+ 1){
+for(let j = 1; j< 9;j= j+ 1)
 if(resolution[i][j] == 0){
-
+result = result + new Pixel('red', 2, 20, j, 'absolute', i, 20)
 }
 }
 return result
@@ -32,10 +48,10 @@ this.nav = null
 getNav(){
 
 let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= j+ 1)
+for(let i = 1; i< 16;i= i+ 1){
+for(let j = 1; j< 9;j= j+ 1)
 if(resolution[i][j] == 0){
-
+result = result + new Pixel('red', 2, 20, j, 'absolute', i, 20)
 }
 }
 return result
@@ -49,10 +65,11 @@ this.aside = null
 getAside(){
 
 let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= j+ 1)
+for(let i = 1; i< 16;i= i+ 1){
+for(let j = 1; j< 9;j= j+ 1)
 if(resolution[i][j] == 0){
 
+result = result + new Pixel('red', 2, 20, j, 'absolute', i, 20)
 }
 }
 return result
@@ -70,14 +87,41 @@ getArticle(){
 const asyncPromise = async fetch("http://github.com/greatsilas23/Guess-Game/tree/master/canvasApi.json").then((res) => return await res.json()).then((err) => console.log('err'))
 
 let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= i+ 1)
+for(let i = 1; i< 16;i= i+ 1){
+for(let j = 1; j< 9;j= i+ 1)
 if(resolution[i][j] == 0){
 
+
+result = result + new Pixel('red', 2, 20, j, 'absolute', i, 20)
 }
 }
 return result
 }
+
+}
+function dither(val){
+let result = null
+if( val == 0){
+result = 'green'
+}
+else if (val == 1){
+result = 'black'
+}
+
+else if (val == 2){
+result = 'brown'
+}
+else if (val == 3){
+result = 'white'
+}
+else if (val == 4){
+result = 'pink' 
+}
+else{
+result = null
+}
+
+return result
 
 }
 class Game extends Account{
@@ -89,48 +133,60 @@ this.article = new Article().getArticle()
 this.footer = new Footer().getFooter()
 this.isGameOver = false
 this.highScore = 0
-this.gameCanvas = null
+this.gameCanvas = new Header().getHeader().concat(new Nav().getNav()).concat(new Aside().getAside()).concat(new Article().getArticle()).concat(new Footer().getFooter())
 }
 isEmpty(){
-let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= j+ 1)
-if(resolution[i][j] == 0){
+this.gameCanvas !== null ? return false: return true
+}
+push( let myMemoryAddress = [[ a11,a12,a13,a14,a15,a16,a17,a18,a19],
+[a21,a22,a23,a24,a25,a26,a27,a28,a29],
+[a31,a32,a33,a34,a35,a36,a37,a38,a39],
+[a41,a42,a43,a44,a45,a46,a47,a48,a49],
+[a51,a52,a53,a54,a55,a56,a57,a58,a59],
+[a61,a62,a63,a64,a65,a66,a67,a68,a69],
+[a71,a72,a73,a74,a75,a76,a77,a78,a79],
+[a81,a82,a83,a84,a85,a86,a87,a88,a89],
+[a91,a92,a93,a94,a95,a96,a97,a98,a99],
+[a101,a102,a103,a104,a105,a106,a107,a108,a109],
+[a111,a112,a113,a114,a115,a116,a117,a118,a119],
+[a121,a122,a123,a124,a125,a126,a127,a128,a129],
+[a131,a132,a133,a134,a135,a136,a137,a138,a139],
+[a141,a142,a143,a144,a145,a146,a147,a148,a149],
+[a151,a152,a153,a154,a155,a156,a157,a158,a159],
+[a161,a162,a163,a164,a165,a166,a167,a168,a169]]){
+return document.querySelector('body').innerHTML += new Pixel(dither(a11), 2, 20, 20, 'absolute', 20, 20) 20).getPixel().concat( new Pixel(dither(a12), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a13) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a14) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a15), , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a16) , 2, 20, 20, 'absolute', 20, 20  ).getPixel()).concat( new Pixel(dither(a17) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a18) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a9) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a21), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a2) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a22) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a23) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a24) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a25) , 2, 20, 20, 'absolute', 20, 20  ).getPixel()).concat( new Pixel(dither(a26) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a27) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a28) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( 
+Pixel(dither(a29) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a31) , 2, 20, 20, 'absolute', 20, 20 ).getPixel() , 2, 20, 20, 'absolute', 20, 20 ).concat( new Pixel(dither(a32) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( 
+Pixel(dither(a33), , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a34), , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a35) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a36) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a37) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a38) , 2, 20, 20, 'absolute', 20, 20  ).getPixel()).concat(
+Pixel(dither(a39), 2, 20, 20, 'absolute', 20, 20).getPixel().concat( new Pixel(dither(a41), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a42) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a43) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a44) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a45)  , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(new Pixel( dither(a46) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a47) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a48), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a44)  , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a45)  , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a46) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a47) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a48) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a49) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a51) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a52) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a52) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a53) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a54), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a55) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a56) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a57), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a58) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( 
+Pixel(dither(a59) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a61) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a62) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( 
+Pixel(dither(a63) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a64) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a65)  , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a66) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a67) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a68), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a69) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a71), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a72) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat(
+Pixel(dither(a73) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a74), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(new Pixel(dither(a75) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(new Pixel(dither(a81) , 2, 20, 20, 'absolute', 20, 20).getPixel().concat( new Pixel(dither(a82) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a83)  , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a84) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a85) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a86), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a87) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a88) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a89) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a91), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a92) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a92), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a93), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a94), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a95) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a96) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a97) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a98), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( 
+Pixel(dither(a99) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a101), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a102) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( 
+Pixel(dither(a103), 2, 20, 20, 'absolute', 20, 20).getPixel().concat( new Pixel(dither(a104) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a105) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a106) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a107) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a108) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a109) , 2, 20, 20, 'absolute', 20, 20  ).getPixel().concat( new Pixel(dither(a111) , 2, 20, 20, 'absolute', 20, 20  ).getPixel()).concat( new Pixel(dither(a112) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a113)  , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a114) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a115), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat(new Pixel(dither(a116) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a117) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a118) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a119), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a121) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a122), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a123) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a124) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a125) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a126) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a127) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a128) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a129) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a131) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(132) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a133) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a134) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a135) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( 
+Pixel(dither(a136) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a137)  , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a138) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( 
+Pixel(dither(a139) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a141) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a142) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a143) , 2, 20, 20, 'absolute', 20, 20 ).getPixel().concat( new Pixel(dither(a144) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a145) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a146) , 2, 20, 20, 'absolute', 20, 20).getPixel().concat( new Pixel(dither(a147) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a148), 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat(
+Pixel(dither(a149) , 2, 20, 20, 'absolute', 20, 20  ).getPixel().concat( new Pixel(dither(a151) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a152), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat(new Pixel(dither(a153), 2, 20, 20, 'absolute', 20, 20).getPixel().concat( new Pixel(dither(a154) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a155) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a156) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a157) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a158) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a159), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a161) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a162) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a163) , 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a164), 2, 20, 20, 'absolute', 20, 20).getPixel()).concat( new Pixel(dither(a165) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a166) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a167) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a168) , 2, 20, 20, 'absolute', 20, 20 ).getPixel()).concat( new Pixel(dither(a169) , 2, 20, 20, 'absolute', 20, 20).getPixel())
 
 }
 }
-return result
-}
-push(){
-let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= j+ 1)
-if(resolution[i][j] == 0){
-
 }
 }
-return result
 }
 pop(){
-
-let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= j+ 1)
-if(resolution[i][j] == 0){
-
-}
-}
-return result
+this.gameCanvas = new Header().getHeader().concat(new Nav().getNav()).concat(new Aside().getAside()).concat(new Article().getArticle()).concat(new Footer().getFooter())
+return 0
 }
 getGame(){
-let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let j = 0; j< 3;j= j+ 1)
-if(resolution[i][j] == 0){
-
-}
-}
-return result
+this.game !== null ? return this.gameCanvas : return new Error()
 
 }
 
