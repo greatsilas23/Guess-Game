@@ -7,13 +7,86 @@ this.name = name
 this.policy = `<p>Guess-Game<br> Guess-Game is an online 2d platform<br> Policy<br> Introduction<br> Service Provider<br> These terms are between you and Guess game </p> &copy; <p>2023  Age and eligibility requirements In order to use the Guess-Game and access any content you need to be 13 years of age (or equivalent minimum age in your country) or older, have parental or guardian consent if you are a minor in your home country, have the power to enter into a binding contract with us and not be barred from doing so under any applicable laws, reside in a country where the service is available <br>Guess-Game Provided By Us<br> Guess-Game Options<br> We provide numerous Guess-Game Options<br> Trials From time to time we or others on our behalf may offer paid subscription for a specified period without payment or at a reduced rate <br>Third Party Applications, Devices and Open Source Software Third-Party Applications, Devices And Open Source Software<br> The Guess-Game may be integrated with, or may otherwise interact with third party applications websites and services and third-party personal computers and mobile handsets<br> Service Limitations and Modifications <br>We use reasonable Care and skill to keep the Guess-Game operational <br>Your Use of The Guess-Game<br> Creating a Guess-Game copyright </p>&copy;<p> nyamwas 2023 account<br> You may need to create a a Guess-Game copyright </p>&copy;<p> nyamwas 2023 Account to use<br> Your rights to use the  Guess-Game copyright </p>&copy;<p> nyamwas 2023 webpage<br> Access to Guess-Game<br> Subject to your compliance with these Terms, we grant you limited, non-exclusive, revocable permission to make personal non-commercial use of the Guess-Game and the Content <br></p>`
 }
 }
+class Header extends Account{
+constructor(source, destination){
+this.source = source
+this.destination = new Network(this.destination)
+}
+
+getHeader(){
+let result
+for(let i = 0; i< 3;i= i+ 1){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
+
+}
+}
+return result
+}
+}
+
+class Nav extends Account{
+constructor(){
+this.nav = null
+}
+getNav(){
+
+let result
+for(let i = 0; i< 3;i= i+ 1){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
+
+}
+}
+return result
+}
+}
+
+class Aside extends Account{
+constructor(){
+this.aside = null
+}
+getAside(){
+
+let result
+for(let i = 0; i< 3;i= i+ 1){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
+
+}
+}
+return result
+}
+
+}
+class Article {
+constructor(){
+this.article = null
+
+}
+getArticle(){
+
+
+const asyncPromise = async fetch("http://github.com/greatsilas23/Guess-Game/tree/master/canvasApi.json").then((res) => return await res.json()).then((err) => console.log('err'))
+
+let result
+for(let i = 0; i< 3;i= i+ 1){
+for(let j = 0; j< 3;j= i+ 1)
+if(resolution[i][j] == 0){
+
+}
+}
+return result
+}
+
+}
 class Game extends Account{
 constructor(){
-this.header = new Header()
-this.nav = new Nav()
-this.aside = new Aside()
-this.article = new Article()
-this.footer = new Footer()
+this.header = new Header("http://github.com/greatsilas23/tree/master/canvasApi.json", window.location.href).getHeader()
+this.nav = new Nav().getNav()
+this.aside = new Aside().getAside()
+this.article = new Article().getArticle()
+this.footer = new Footer().getFooter()
 this.isGameOver = false
 this.highScore = 0
 this.gameCanvas = null
@@ -21,8 +94,8 @@ this.gameCanvas = null
 isEmpty(){
 let result
 for(let i = 0; i< 3;i= i+ 1){
-for(let i = 0; i< 3;i= i+ 1)
-if(){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
 
 }
 }
@@ -31,8 +104,8 @@ return result
 push(){
 let result
 for(let i = 0; i< 3;i= i+ 1){
-for(let i = 0; i< 3;i= i+ 1)
-if(){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
 
 }
 }
@@ -42,8 +115,8 @@ pop(){
 
 let result
 for(let i = 0; i< 3;i= i+ 1){
-for(let i = 0; i< 3;i= i+ 1)
-if(){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
 
 }
 }
@@ -52,8 +125,8 @@ return result
 getGame(){
 let result
 for(let i = 0; i< 3;i= i+ 1){
-for(let i = 0; i< 3;i= i+ 1)
-if(){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
 
 }
 }
@@ -62,44 +135,109 @@ return result
 }
 
 }
-const playerVersusPlayer = new Game().getGame()
+class Tree {
+constructor(){
+this.root = new Object({right : new Tree(), left : new Tree()})
+}
+getLeft(){
+this.tree.left !== null ? return this.tree.left : return 0
+}
 
-function play(){
-let p1 = new Account(01,'admin')
+getRight(){
+this.tree.right !== null ? return this.tree.right : return 0
+}
+
+}
+
+class Pixel {
+
+constructor(backgroundRadius, border, height, left, position, top, width){
+this.pixel = `<div id="${Math.random()}" style="background-color: ${backgrounRadius}; border: solid ${border}px black; height: ${height}; left: ${left}px; position: ${position}; top: ${top}; width: ${width}; z-index: 5;"></div>`
+
+}
+antiAliasing(){
+return this.pixel
+}
+}
+class Network extends Tree{
+constructor(){
+this.tree = this.root
+this.visitStack = new Array()
+this.preOrder = null
+}
+isEmpty(){
+this.tree == null ? return true : return false
+}
+preOrderDisplay(){
+if (!isEmpty()){
+let visitStack = new LinkedBasedStack()
+curr = this.tree
+visitStack.push(curr)
+while(!visitStack.isEmpty()) {
+curr = visitStack.pop()
+console.log(curr.getElem())
+if (curr.getRight() != null) 
+visitStack.push(curr.getRight())
+if (curr.getLeft() != null) 
+visitStack.push(curr.getLeft())
+} 
+}
+
+}
+
+}
+class Session{
+constructor(){
+this.playerVersusPlayer = new Game().getGame()
+this.p1 = new Account(01,'admin')
+this.AI = new Network(Math.random()).getRoot()
+this.AIAttack = this.AI.getLeft()
+this.AIDefend = this.AI.getRight()
+}
+play(){
+let result
+for(let i = 0; i< 3;i= i+ 1){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
+
+}
+}
+return result
+}
+pause(){
 
 let result
 for(let i = 0; i< 3;i= i+ 1){
-for(let i = 0; i< 3;i= i+ 1)
-if(){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
 
 }
 }
 return result
 }
-function pause(){
-
-let result
-for(let i = 0; i< 3;i= i+ 1){
-for(let i = 0; i< 3;i= i+ 1)
-if(){
-
-}
-}
-return result
-}
-function resume(){
+resume(){
 
 
 let result
 for(let i = 0; i< 3;i= i+ 1){
-for(let i = 0; i< 3;i= i+ 1)
-if(){
+for(let j = 0; j< 3;j= j+ 1)
+if(resolution[i][j] == 0){
 
 }
 }
 return result
 }
+}
+const frameDump = setInterval(() => new Session().play())
+const startTime = new Date().getMinutes()
+const endTime = 1.0
 
-const frameDump = setInterval(() => play())
-
+p1Punch.addEventListener('click', () => )
+const sim_time = startTime - endTime
+const mean_inter_arrival = 1.0
+const num_custs = 1.0
+const num_in_q = 1.0
+const num_custs_delayed = 1.0
+const area_status = null
+const server_utilization = area_status / sim_time
 </script></body></html>
