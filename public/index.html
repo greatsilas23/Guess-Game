@@ -1,261 +1,681 @@
-<!doctype html>
-<html lang="en">
+<!--A program that displays a questionnaire-->
+
+<!DOCTYPE html>
+
+<html>
+
 <head>
-<meta charset="utf-8">
-<meta name="author" content="greatsilas23">
-<meta name="description" content="a report that uses traditional file management system in Point Of Sale at vendors and retailers">
-<meta name="robots" content="follow, no-follow">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-.newGame{
-animation: newGameAnim 1.2s;
-}
-@keyframes newGameAnim{
-from {
-background-color: grey;
-border: solid 2px black;
-display: none;
-height: 60vh;
-left: 30vw;
-position: absolute;
-top: -10vh;
-width: 60vw;
-z-index: 0;
-} to { 
 
+	<title>QUESTIONNAIRE</title>
 
-background-color: grey;
-border: solid 2px black;
-display: none;
-height: 60vh;
-left: 30vw;
-position: absolute;
-top: 40vh;
-width: 60vw;
-z-index: 2;
-}
-}
-
-.gameOver{
-animation: gameOverAnim 1.2s;
-}
-@keyframes gameOverAnim {
-from{ 
-
-background-color: grey;
-border: solid 2px black;
-display: none;
-height: 60vh;
-left: 30vw;
-position: absolute;
-top: -10vh;
-width: 60vw;
-z-index: 500;
-
-} to {
-
-
-background-color: grey;
-border: solid 2px black;
-display: none;
-height: 60vh;
-left: 30vw;
-position: absolute;
-top: 30vh;
-width: 60vw;
-z-index: 2;
-}
-}
-
-
-.jump{
-animation: jumpAnim 1.2s;
-}
-@keyframes jumpAnim{
-from{
-top: 80vh;
-} to { 
-top: 70vh;
-}
-}
-.punch
-{
-animation: punchAnim 1.2s;
-}
-@keyframes punchAnim{
-from {
-transform(rotateX: 45;)
-} to {
-transform(rotateX: 15;)
-}
-}
 </head>
+
 <body>
+
+	<div id="divBackG">
+
+		<fieldset>
+
+			<fieldset>
+
+				<center>
+
+				<h4>WELCOME TO COMPUTER SCIENCE</h4><br>
+
+				<input  id="name" placeholder="FIRST NAME" />
+
+				<input id="e-mail" placeholder="E-MAIL ADDRESS" /><br>
+
+				<p id="score"></p>
+
+			</center>	
+
+			</fieldset>
+
+			
+
+			
+
+			<legend>ANSWER THE FOLLOWING</legend>
+
+			
+
+			<form onsubmit="event.preventDefault();">
+
+				<p>1. Define abstraction</p><br>
+
+				<input type="radio" id="choice1_1" name="qn1" value=""/>
+
+				<label for="choice1_1">The removal of several steps leaving only relevant data</label><br>
+
+				<input type="radio" id="choice2_1" name="qn1" value=""/>
+
+				<label for="choice2_1">Blocking someone from performing an action</label><br>
+
+				<input type="radio" id="choice3_1" name="qn1" value=""/>
+
+				<label for="choice3_1">Storing data into tables</label><br>
+
+				<input type="radio" id="choice4_1" name="qn1" value=""/>
+
+				<label for="choice4_1">Removing necessary sections of code from overall code</label><br>
+
+				<p id="varError1"></p>
+
+
+
+				<p>2. Define object oriented programming</p><br>
+
+				<input type="radio" id="choice1_2" name="qn2" value=""/>
+
+				<label for="choice1_2">Programming where only one main method is used</label><br>
+
+				<input type="radio" id="choice2_2" name="qn2" value=""/>
+
+				<label for="choice2_2">Programming where several sub-methods are used to solve a larger problem</label><br>
+
+				<input type="radio" id="choice3_2" name="qn2" value=""/>
+
+				<label for="choice3_2">Programming where data in tables, forms and reports</label><br>
+
+				<input type="radio" id="choice4_2" name="qn2" value=""/>
+
+				<label for="choice4_2">Programming where all variables are global variables</label><br>
+
+				<p id="varError2"></p>
+
+
+
+				<p>3. Define a class</p><br>
+
+				<input type="radio" id="choice1_3" name="qn3" value=""/>
+
+				<label for="choice1_3">An instance of a variable</label><br>
+
+				<input type="radio" id="choice2_3" name="qn3" value=""/>
+
+				<label for="choice2_3">A section of the overall code that solves a subproblem</label><br>
+
+				<input type="radio" id="choice3_3" name="qn3" value=""/>
+
+				<label for="choice3_3">The removal of several steps leaving only relevant data</label><br>
+
+				<input type="radio" id="choice4_3" name="qn3" value=""/>
+
+				<label for="choice4_3">Blocking someone from performing an action</label><br>
+
+				<p id="varError3"></p>
+
+
+
+				<p>4. What is the use of public in "public static void main(String args[])"?</p><br>
+
+				<input type="radio" id="choice1_4" name="qn4" value=""/>
+
+				<label for="choice1_4">Any user can use the instruction</label><br>
+
+				<input type="radio" id="choice2_4" name="qn4" value=""/>
+
+				<label for="choice2_4">Variables and methods are only accesible to the method they are created</label><br>
+
+				<input type="radio" id="choice3_4" name="qn4" value=""/>
+
+				<label for="choice3_4">Variables and methods are accesible to all methods in the package</label><br>
+
+				<input type="radio" id="choice4_4" name="qn4" value=""/>
+
+				<label for="choice4_4">Variables and methods are acesible to other sub-methods in the same package
+
+				</label><br>
+
+				<p id="varError4"></p>
+
+
+
+				<p>5. Determine the running time of the "Hello World" program</p><br>
+
+				<input type="radio" id="choice1_5" name="qn5" value=""/>
+
+				<label for="choice1_5">O(n)</label><br>
+
+				<input type="radio" id="choice2_5" name="qn5" value=""/>
+
+				<label for="choice2_5">O(1)</label><br>
+
+				<input type="radio" id="choice3_5" name="qn5" value=""/>
+
+				<label for="choice3_5">O(n^2)</label><br>
+
+				<input type="radio" id="choice4_5" name="qn5" value=""/>
+
+				<label for="choice4_5">none of the above</label><br>
+
+				<p id="varError5"></p>
+
+
+
+				<center>
+
+					<button id="" onclick="onSubmit();alert('Submit all and finish?');">FINISH ATTEMPT
+
+					</button>
+
+					
+
+				</center>
+
+			</form>
+
+			
+
+		</fieldset>
+
+	</div>
+
+	<p>Library-Ideology © copyright 2023 is an upcoming service that connects our clients with suppliers from allover the world
+
+Library-Ideology Library-Ideology is an online Ecommerce platform Policy Introduction Service Provider These terms are between you and Library-Ideology Age and eligibility requirements In order to use the Library-Ideology and access any content you need to be 13 years of age (or equivalent minimum age in your country) or older, have parental or guardian consent if you are a minor in your home country, have the power to enter into a binding contract with us and not be barred from doing so under any applicable laws, reside in a country where the service is available Library-Ideology Provided By Us Library-Ideology Options We provide numerous Library-Ideology Options Trials From time to time we or others on our behalf may offer trials of paid subscription for a specified period without payment or at a reduced rate Third Party Applications, Devices and Open Source Software Third-Party Applications, Devices And Open Source Software The Library-Ideology may be integrated with, or may otherwise interact with third party applications websites and services and third-party personal computers and mobile handsets tablets wearable devices speakers and other devices Service Limitations and Modifications We use reasonable Care and skill to keep the Library-Ideology operational Your Use of The Library-Ideology Creating a Library-Ideology account You may need to create a Agristores-technologies Account to use Your rights to use the Library-Ideology Access to Library-Ideology Subject to your compliance with these Terms, we grant you limited, non-exclusive, revocable permission to make personal non-commercial use of the Library-Ideology and the Content Library-Ideology's proprietary rights The Library-Ideology and the content are the property of Library-Ideology or Library-Ideology's licensors Payments and cancellation You may purchase a Paid Subscription directly from Library-Ideology or through a third party by Paying</p>
+
+	<p>Notice is hereby given of a general meeting of the stakeholders of Agristores Ideology on date 
+
+30th this month of January 2021. Consider the Agenda items given bellow. All members are 
+
+requested to be present at the meeting.
+
+By Order,
+
+Blair Tarus.
+
+CEO & Acting Company Secretary.
+
+AGENDA.
+
+1. Introduction of Members & New Team Members.
+
+2. Appointment of new Acting Company Secretary.
+
+3. New roles/ Change of roles by new members.
+
+4. Presentation of founders’ agreement and non-disclosure agreement.
+
+5. Formation of a taskforce to draft company constitution.
+
+6. To receive every member Ideology Report on Agristore and suggestions to possibly 
+
+implement.
+
+7. Presentation of the Business Model.
+
+8. Presentation of projects by members.
+
+9. Guideline/ expectations of completion of projects/strategies.
+
+10. AOB’s.
+
+11. Questions from Members/ Expectations from Member/ Accountability…. etc.
+
+12. Final Words/ Takeaway from members.</p>
+
+	<p>Notice is hereby given of our 2nd General Meeting of the year to the Stakeholders of 
+
+
+
+Agristores Ideology on date 24th this month (July) 2021. 
+
+
+
+The meeting will be hosted at Wesley Arnold home in Madaraka along Ole Sangale road as 
+
+from 9:00 a.m. of the said date. Details of the Meeting will be venue ie location address will 
+
+be sent.
+
+Agenda items will be sent via E-mail and WhatsApp direct messages and group chat by the 
+
+course of the day. Any communication prior to the meeting should be communicated prior 
+
+to the date of the meetingp>
+
 </body>
-<script type="text/javascript">
-/** @Author: greatsilas23
-  * @Date: Tue Sep 26 2023 21:43:00 +0300
-  * @LastModifiedBy: greatsilas23
-  * @LastModifiedDate: Tue Sep 26 22:48:00 +0300
-  */
-const gravity = 2
-const sim = new Date().getSeconds()
+
+<script>
+
+var score=0;
+
+var percentage=0;
+
+function onSubmit()
+
+{
+
+	var name=document.getElementById("name").value;
+
+	var e_mail=document.getElementById("e-mail").value;
+
+	
+
+	if(document.getElementById("choice1_1").checked)
+
+		document.getElementById("varError1").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else 
+
+		document.getElementById("varError1").innerHTML="correct answer is (a): The removal of several steps leaving only relevant data";
+
+	if(document.getElementById("choice2_2").checked)
+
+		document.getElementById("varError2").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError2").innerHTML="correct answer is (b): Programming where several sub-methods are used to solve a larger problem";
+
+	if(document.getElementById("choice1_3").checked)
+
+		document.getElementById("varError3").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError3").innerHTML="correct answer is (a): An instance of a variable";
+
+	if(document.getElementById("choice3_4").checked)
+
+		document.getElementById("varError4").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError4").innerHTML="correct answer is (c): Variables and methods are accesible to all methods in the package";
+
+	if(document.getElementById("choice1_5").checked)
+
+		document.getElementById("varError5").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError5").innerHTML="correct answer is (a): O(n)";
+
+	
+
+	
+
+	if(document.getElementById("choice1_1").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice2_2").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice1_3").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice3_4").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice1_5").checked)
+
+		score+=1;
+
+	percentage=(score/5)*100
+
+	document.getElementById("score").innerHTML=`Congratulations ${name}: score: (${score}/5) percentage: ${percentage}`;
+<!--A program that displays a questionnaire-->
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+	<title>QUESTIONNAIRE</title>
+
+</head>
+
+<body>
+
+	<div id="divBackG">
+
+		<fieldset>
+
+			<fieldset>
+
+				<center>
+
+				<h4>WELCOME TO COMPUTER SCIENCE</h4><br>
+
+				<input  id="name" placeholder="FIRST NAME" />
+
+				<input id="e-mail" placeholder="E-MAIL ADDRESS" /><br>
+
+				<p id="score"></p>
+
+			</center>	
+
+			</fieldset>
+
+			
+
+			
+
+			<legend>ANSWER THE FOLLOWING</legend>
+
+			
+
+			<form onsubmit="event.preventDefault();">
+
+				<p>1. Define abstraction</p><br>
+
+				<input type="radio" id="choice1_1" name="qn1" value=""/>
+
+				<label for="choice1_1">The removal of several steps leaving only relevant data</label><br>
+
+				<input type="radio" id="choice2_1" name="qn1" value=""/>
+
+				<label for="choice2_1">Blocking someone from performing an action</label><br>
+
+				<input type="radio" id="choice3_1" name="qn1" value=""/>
+
+				<label for="choice3_1">Storing data into tables</label><br>
+
+				<input type="radio" id="choice4_1" name="qn1" value=""/>
+
+				<label for="choice4_1">Removing necessary sections of code from overall code</label><br>
+
+				<p id="varError1"></p>
 
 
-let i = 9
-let id = 'div01'
-let name
-let description = new Object({ posX: 0, posY: 0, top: 0, left: 0, val: null})
-let isGameOver = false
 
-while(!isGameOver){
-class Line{
-constructor(a, b, c, d){
-this.isEmpty = false
-this.a = a
-this.b = b
-this.c = c
-this.d = d
-}
-update(posX, posY, top, left){
-let result
-!this.isEmpty ? result = new Line(posX, posY, top, left) : console.log('err')
-return result
-}
-}
-class Plane{
-constructor(a, b, c, d){
-this.isEmpty = false
-this.a = a
-this.b = b
-this.c = c
-this.d = d
-}
-update(posX, posY, top, left){
-let result 
-!this.isEmpty ? result = new Plane(posX, posY, top, left) : console.log('err')
-return result
-}
-}
-class Reservation{
-constructor(id, name, description){
-this.isEmpty = true
-this.id = id
-this.name = name
-this.description = description
-}
-}
+				<p>2. Define object oriented programming</p><br>
 
-class Menu {
-constructor(a, b){
-this.a = a
-this.b = b
-}
-update(posX, posY, top, left){
-let result
-!this.isEmpty ? result = new Menu(posX, posY, top, left) : console.log('err')
+				<input type="radio" id="choice1_2" name="qn2" value=""/>
 
-return result
-}
-}
-class Component{
-constructor(id, name, description){
-this.id = id
-this.name = name
-this.description = description
-this.isEmpty = false
-}
-update(posX, posY, top, left) {
-let result 
-!this.isEmpty ? result = new Line(posX, posY, top, left) : console.log('err')
+				<label for="choice1_2">Programming where only one main method is used</label><br>
 
-return result
-}
-}
+				<input type="radio" id="choice2_2" name="qn2" value=""/>
 
-let myLine2 = new Line(posX, posY, top, left)
-console.log(myLine2)
-let myLine3 = new Line(posX, posY, top, left)
-console.log(myLine3)
+				<label for="choice2_2">Programming where several sub-methods are used to solve a larger problem</label><br>
 
-class Avatar extends Reservation{
-constructor(posX, posY, top, left){
-super()
-this.isEmpty = false
-this.avatarId = this.id
-this.avatarName = this.avatar
-this.avatarDescription = myLine2.update(posX, posY, top, left)
-}
-get(){
-let result 
-!this.isEmpty ? result = '<div id="'.concat(id).concat('" class="" >').concat(this.avatarDescription).concat('</div>') : console.log('err')
+				<input type="radio" id="choice3_2" name="qn2" value=""/>
 
-return result
-}
-update(posX, posY, top, left){
-let result
-!this.isEmpty ? result = myLine3.update(posX, posY, top, left) : console.log('err')
-return result
-}
-}
+				<label for="choice3_2">Programming where data in tables, forms and reports</label><br>
 
-let myLine = new Line(0, 0, 0, 0)
-console.log(myLine)
-class City extends Reservation{
-constructor(posX, posY, top, left){
-super()
-this.isEmpty = false
-this.cityId = this.id
-this.cityName = this.name
-this.cityDescription = myLine.update(posX, posY, top, left)
-}
-get(){
-let result
-!this.isEmpty ? result = this.cityDescription : console.log('err')
+				<input type="radio" id="choice4_2" name="qn2" value=""/>
 
-return result
-}
-}
-let myMenu = new Menu(0, 0, 0, 0)
-console.log(myMenu)
-let myPlane = new Plane(0, 0, 0, 0)
-console.log(myPlane)
-class Game extends Component {
-constructor(){
-this.gameId = id.charAt(i).concat(id.charAt(i + 1)).concat(id.charAt(i + 2)).concat(id.charAt(i + 3)).concat(id.charAt(i + 4)).concat(id.charAt(i + 5)).concat(id.charAt(i + 6))
+				<label for="choice4_2">Programming where all variables are global variables</label><br>
+
+				<p id="varError2"></p>
 
 
-this.gameName = id.charAt(i).concat(id.charAt(i + 1)).concat(id.charAt(i + 2)).concat(id.charAt(i + 3)).concat(id.charAt(i + 4)).concat(id.charAt(i + 5)).concat(id.charAt(i + 6))
-this.isGameOver = false
-this.menu = myMenu.update()
+
+				<p>3. Define a class</p><br>
+
+				<input type="radio" id="choice1_3" name="qn3" value=""/>
+
+				<label for="choice1_3">An instance of a variable</label><br>
+
+				<input type="radio" id="choice2_3" name="qn3" value=""/>
+
+				<label for="choice2_3">A section of the overall code that solves a subproblem</label><br>
+
+				<input type="radio" id="choice3_3" name="qn3" value=""/>
+
+				<label for="choice3_3">The removal of several steps leaving only relevant data</label><br>
+
+				<input type="radio" id="choice4_3" name="qn3" value=""/>
+
+				<label for="choice4_3">Blocking someone from performing an action</label><br>
+
+				<p id="varError3"></p>
+
+
+
+				<p>4. What is the use of public in "public static void main(String args[])"?</p><br>
+
+				<input type="radio" id="choice1_4" name="qn4" value=""/>
+
+				<label for="choice1_4">Any user can use the instruction</label><br>
+
+				<input type="radio" id="choice2_4" name="qn4" value=""/>
+
+				<label for="choice2_4">Variables and methods are only accesible to the method they are created</label><br>
+
+				<input type="radio" id="choice3_4" name="qn4" value=""/>
+
+				<label for="choice3_4">Variables and methods are accesible to all methods in the package</label><br>
+
+				<input type="radio" id="choice4_4" name="qn4" value=""/>
+
+				<label for="choice4_4">Variables and methods are acesible to other sub-methods in the same package
+
+				</label><br>
+
+				<p id="varError4"></p>
+
+
+
+				<p>5. Determine the running time of the "Hello World" program</p><br>
+
+				<input type="radio" id="choice1_5" name="qn5" value=""/>
+
+				<label for="choice1_5">O(n)</label><br>
+
+				<input type="radio" id="choice2_5" name="qn5" value=""/>
+
+				<label for="choice2_5">O(1)</label><br>
+
+				<input type="radio" id="choice3_5" name="qn5" value=""/>
+
+				<label for="choice3_5">O(n^2)</label><br>
+
+				<input type="radio" id="choice4_5" name="qn5" value=""/>
+
+				<label for="choice4_5">none of the above</label><br>
+
+				<p id="varError5"></p>
+
+
+
+				<center>
+
+					<button id="" onclick="onSubmit();alert('Submit all and finish?');">FINISH ATTEMPT
+
+					</button>
+
+					
+
+				</center>
+
+			</form>
+
+			
+
+		</fieldset>
+
+	</div>
+
+	<p>Library-Ideology © copyright 2023 is an upcoming service that connects our clients with suppliers from allover the world
+
+Library-Ideology Library-Ideology is an online Ecommerce platform Policy Introduction Service Provider These terms are between you and Library-Ideology Age and eligibility requirements In order to use the Library-Ideology and access any content you need to be 13 years of age (or equivalent minimum age in your country) or older, have parental or guardian consent if you are a minor in your home country, have the power to enter into a binding contract with us and not be barred from doing so under any applicable laws, reside in a country where the service is available Library-Ideology Provided By Us Library-Ideology Options We provide numerous Library-Ideology Options Trials From time to time we or others on our behalf may offer trials of paid subscription for a specified period without payment or at a reduced rate Third Party Applications, Devices and Open Source Software Third-Party Applications, Devices And Open Source Software The Library-Ideology may be integrated with, or may otherwise interact with third party applications websites and services and third-party personal computers and mobile handsets tablets wearable devices speakers and other devices Service Limitations and Modifications We use reasonable Care and skill to keep the Library-Ideology operational Your Use of The Library-Ideology Creating a Library-Ideology account You may need to create a Agristores-technologies Account to use Your rights to use the Library-Ideology Access to Library-Ideology Subject to your compliance with these Terms, we grant you limited, non-exclusive, revocable permission to make personal non-commercial use of the Library-Ideology and the Content Library-Ideology's proprietary rights The Library-Ideology and the content are the property of Library-Ideology or Library-Ideology's licensors Payments and cancellation You may purchase a Paid Subscription directly from Library-Ideology or through a third party by Paying</p>
+
+	<p>Notice is hereby given of a general meeting of the stakeholders of Agristores Ideology on date 
+
+30th this month of January 2021. Consider the Agenda items given bellow. All members are 
+
+requested to be present at the meeting.
+
+By Order,
+
+Blair Tarus.
+
+CEO & Acting Company Secretary.
+
+AGENDA.
+
+1. Introduction of Members & New Team Members.
+
+2. Appointment of new Acting Company Secretary.
+
+3. New roles/ Change of roles by new members.
+
+4. Presentation of founders’ agreement and non-disclosure agreement.
+
+5. Formation of a taskforce to draft company constitution.
+
+6. To receive every member Ideology Report on Agristore and suggestions to possibly 
+
+implement.
+
+7. Presentation of the Business Model.
+
+8. Presentation of projects by members.
+
+9. Guideline/ expectations of completion of projects/strategies.
+
+10. AOB’s.
+
+11. Questions from Members/ Expectations from Member/ Accountability…. etc.
+
+12. Final Words/ Takeaway from members.</p>
+
+	<p>Notice is hereby given of our 2nd General Meeting of the year to the Stakeholders of 
+
+
+
+Agristores Ideology on date 24th this month (July) 2021. 
+
+
+
+The meeting will be hosted at Wesley Arnold home in Madaraka along Ole Sangale road as 
+
+from 9:00 a.m. of the said date. Details of the Meeting will be venue ie location address will 
+
+be sent.
+
+Agenda items will be sent via E-mail and WhatsApp direct messages and group chat by the 
+
+course of the day. Any communication prior to the meeting should be communicated prior 
+
+to the date of the meetingp>
+
+</body>
+
+<script>
+
+var score=0;
+
+var percentage=0;
+
+function onSubmit()
+
+{
+
+	var name=document.getElementById("name").value;
+
+	var e_mail=document.getElementById("e-mail").value;
+
+	
+
+	if(document.getElementById("choice1_1").checked)
+
+		document.getElementById("varError1").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else 
+
+		document.getElementById("varError1").innerHTML="correct answer is (a): The removal of several steps leaving only relevant data";
+
+	if(document.getElementById("choice2_2").checked)
+
+		document.getElementById("varError2").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError2").innerHTML="correct answer is (b): Programming where several sub-methods are used to solve a larger problem";
+
+	if(document.getElementById("choice1_3").checked)
+
+		document.getElementById("varError3").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError3").innerHTML="correct answer is (a): An instance of a variable";
+
+	if(document.getElementById("choice3_4").checked)
+
+		document.getElementById("varError4").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError4").innerHTML="correct answer is (c): Variables and methods are accesible to all methods in the package";
+
+	if(document.getElementById("choice1_5").checked)
+
+		document.getElementById("varError5").innerHTML="correct answer";
+
+		//score=score+1;
+
+	else
+
+		document.getElementById("varError5").innerHTML="correct answer is (a): O(n)";
+
+	
+
+	
+
+	if(document.getElementById("choice1_1").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice2_2").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice1_3").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice3_4").checked)
+
+		score+=1;
+
+	if(document.getElementById("choice1_5").checked)
+
+		score+=1;
+
+	percentage=(score/5)*100
+
+	document.getElementById("score").innerHTML=`Congratulations ${name}: score: (${score}/5) percentage: ${percentage}`;
+
 }
-getCanvas(){
-let result
-!this.isGameOver ? result = this.gameDescription : console.log('err')
 
-return result
-}
-update(posX, posY, top, left){
-let result
-!this.isGameOver ? result = myPlane.update(posX, posY, top, left) : console.log('err')
-return result
-}
+	
+
+</script>
+
+</html>
 }
 
-let myGame = new Game(0, 0, 0, 0)
+	
 
+</script>
 
-const d = setInterval(() => document.querySelector('body').innerHTML += myGame.update(description.posX, description.posY, description.top, description.left))
-
-const e = setInterval(() => (sim - new Date().getSeconds() >= 60) ? isGameOver = true : isGameOver = false)
-
-
-key1.addEventListener('click', () => document.querySelector('div#id01').classList.add(jump))
-
-
-key2.addEventListener('click', () => document.querySelector('div#id01').classList.add(punch))
-
-
-score = score++
-}
-console.log('game over')
+ </html>
