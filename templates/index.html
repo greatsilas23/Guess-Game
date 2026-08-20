@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% block title %}Lyric Drop — Pixel Reggae Quiz{% endblock %}
+{% block content %}
+
+<div class="frame" role="application" aria-label="Lyric Drop — music quiz">
+    <main>
+        <section class="sprite-wrap">
+            <div class="sprite" aria-hidden="true">
+                <div class="pixel-guitarist">
+                    <div class="pg-head"></div>
+                    <div class="pg-body"></div>
+                    <div class="pg-guitar"></div>
+                </div>
+            </div>
+            <div class="name-entry">
+                <label for="playerName">Your name</label>
+                <input type="text" id="playerName" placeholder="Enter a name" maxlength="30">
+            </div>
+        </section>
+
+        <section class="panel" id="game">
+            <div class="row">
+                <div class="pill" id="round-pill">Round 1 / 6</div>
+                <div class="pill">Streak <strong id="streak">0</strong></div>
+                <div class="pill score">Score <strong id="score">0</strong></div>
+            </div>
+
+            <div class="progress" aria-hidden="true"><div id="progbar"></div></div>
+
+            <div class="row">
+                <button id="playBtn" class="go">Play clip</button>
+                <button id="stopBtn" class="stop disabled">Stop</button>
+                <button id="nextBtn" class="disabled">Next</button>
+            </div>
+
+            <div class="tiny" id="hint">Tap "Play clip". When the music stops, pick the correct lyric to keep your streak.</div>
+
+            <div class="choices" id="choices" aria-live="polite" aria-label="Lyric options"></div>
+
+            <div class="feedback" id="feedback" aria-live="polite"></div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="tiny">Tip: press <b>1&ndash;4</b> to answer quickly. Toggle sound with <b>M</b>.</div>
+        <div class="tiny">Made with Web Audio (no external files).</div>
+    </footer>
+</div>
+
+<script src="{{ url_for('static', filename='js/game.js') }}"></script>
+{% endblock %}

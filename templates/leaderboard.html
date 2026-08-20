@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block title %}Leaderboard — Lyric Drop{% endblock %}
+{% block content %}
+
+<div class="frame">
+    <main class="leaderboard-main">
+        <section class="panel wide">
+            <h1 class="lb-title">Top scores</h1>
+            {% if scores %}
+            <table class="lb-table">
+                <thead>
+                    <tr><th>#</th><th>Player</th><th>Score</th><th>Best streak</th></tr>
+                </thead>
+                <tbody>
+                    {% for s in scores %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>{{ s.player_name }}</td>
+                        <td>{{ s.score }}</td>
+                        <td>{{ s.best_streak }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% else %}
+            <p class="tiny">No scores yet &mdash; be the first to play!</p>
+            {% endif %}
+            <a href="{{ url_for('index') }}" class="go btn-link">Play Lyric Drop</a>
+        </section>
+    </main>
+</div>
+{% endblock %}

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}Lyric Drop{% endblock %}</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="page">
+    <div class="topbar">
+        <a href="{{ url_for('index') }}" class="logo">
+            <span class="dot red"></span><span class="dot amber"></span><span class="dot green"></span>
+            <span class="logo-text">LYRIC DROP</span>
+        </a>
+        <a href="{{ url_for('leaderboard') }}" class="topbar-link">Leaderboard</a>
+    </div>
+
+    {% block content %}{% endblock %}
+</div>
+
+</body>
+</html>
